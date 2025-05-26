@@ -25,13 +25,14 @@ public class SelfStoreProductService implements ProductService{
     @Override
     public Product getSingleProduct(Long id) throws ProductNotFoundException {
         Optional<Product> optionalProduct = productRepository.findById(id);
-        return productRepository.findById(id).orElseThrow(()->new ProductNotFoundException("Product Id is not valid"));
+        return productRepository.findById(id).orElseThrow(()->new ProductNotFoundException(id,"Product Id is not valid"));
 //        return optionalProduct.get();
     }
 
     @Override
     public List<Product> getAllProduct() {
         return productRepository.findAll();
+//        return List.of();
     }
 
     @Override

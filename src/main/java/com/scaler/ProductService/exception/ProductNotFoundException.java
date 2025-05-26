@@ -8,7 +8,6 @@ public class ProductNotFoundException extends Exception{
     public ProductNotFoundException(Long id, String message){
         super(message);
         this.id = id;
-
     }
 
     public ProductNotFoundException(String message){
