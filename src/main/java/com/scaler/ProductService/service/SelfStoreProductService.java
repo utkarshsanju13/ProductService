@@ -31,7 +31,7 @@ public class SelfStoreProductService implements ProductService{
 
     @Override
     public List<Product> getAllProduct() {
-        return List.of();
+        return productRepository.findAll();
     }
 
     @Override
