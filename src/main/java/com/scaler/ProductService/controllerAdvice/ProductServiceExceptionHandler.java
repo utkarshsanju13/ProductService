@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ProductServiceExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<RuntimeExceptionDto> handleRuntimeException(){
-
-        RuntimeExceptionDto runtimeExceptionDto = new RuntimeExceptionDto();
-        runtimeExceptionDto.setMessage("Something went wrong..");
-        runtimeExceptionDto.setResolution("Please try again..for more information CONTACT US..Thanks! ");
-        return new ResponseEntity<RuntimeExceptionDto>(
-                        runtimeExceptionDto,
-                        HttpStatus.NOT_FOUND
-        );
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    public ResponseEntity<RuntimeExceptionDto> handleRuntimeException(){
+//
+//        RuntimeExceptionDto runtimeExceptionDto = new RuntimeExceptionDto();
+//        runtimeExceptionDto.setMessage("Something went wrong..");
+//        runtimeExceptionDto.setResolution("Please try again..for more information CONTACT US..Thanks! ");
+//        return new ResponseEntity<RuntimeExceptionDto>(
+//                        runtimeExceptionDto,
+//                        HttpStatus.NOT_FOUND
+//        );
+//    }
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ProductNotFoundExceptionDto> handleProductNotFoundException(ProductNotFoundException ex){

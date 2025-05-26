@@ -4,6 +4,7 @@ import com.scaler.ProductService.exception.ProductNotFoundException;
 import com.scaler.ProductService.model.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -11,7 +12,7 @@ public interface ProductService {
 
     List<Product> getAllProduct();
 
-    Product createProduct(Product product);
+    Product createProduct(Product product) throws Exception;
 
     boolean deleteProduct(Long id);
 }

@@ -5,6 +5,7 @@ import com.scaler.ProductService.exception.ProductNotFoundException;
 import com.scaler.ProductService.model.Product;
 import com.scaler.ProductService.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class ProductController {
 //    @Autowired
     private ProductService productService;
 
-    public ProductController(ProductService productService){
+    public ProductController(@Qualifier("SelfStoreProductService") ProductService productService){
         this.productService = productService;
     }
 
@@ -39,10 +40,10 @@ public class ProductController {
         return productService.getAllProduct();
     }
 
-    @PostMapping("/ ")
-    public Product createProduct(@RequestBody Product product){
-
-        return new Product();
+    @PostMapping()
+    public Product createProduct(@RequestBody Product product) throws  Exception{
+        return productService.createProduct(product);
+//        return new Product();
     }
 
     @DeleteMapping("/{id}")
@@ -62,17 +63,17 @@ public class ProductController {
 
 
     //Controller specific exception...
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<RuntimeExceptionDto> handleRuntimeException(){
-
-        RuntimeExceptionDto runtimeExceptionDto = new RuntimeExceptionDto();
-        runtimeExceptionDto.setMessage("Exception from the controller....");
-        runtimeExceptionDto.setResolution("Please try again..for more information CONTACT US..Thanks! ");
-        return new ResponseEntity<RuntimeExceptionDto>(
-                runtimeExceptionDto,
-                HttpStatus.NOT_FOUND
-        );
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    public ResponseEntity<RuntimeExceptionDto> handleRuntimeException(){
+//
+//        RuntimeExceptionDto runtimeExceptionDto = new RuntimeExceptionDto();
+//        runtimeExceptionDto.setMessage("Exception from the controller....");
+//        runtimeExceptionDto.setResolution("Please try again..for more information CONTACT US..Thanks! ");
+//        return new ResponseEntity<RuntimeExceptionDto>(
+//                runtimeExceptionDto,
+//                HttpStatus.NOT_FOUND
+//        );
+//    }
 
 
 }
