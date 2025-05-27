@@ -32,7 +32,6 @@ public class SelfStoreProductService implements ProductService{
     @Override
     public List<Product> getAllProduct() {
         return productRepository.findAll();
-//        return List.of();
     }
 
     @Override
@@ -50,7 +49,7 @@ public class SelfStoreProductService implements ProductService{
             Category newCategory = categoryRepository.save(category);
             category.setId(newCategory.getId());
         }
-            product.setCategory(category);
+            product.setCategory(category1.get());
         if(null != product){
             productRepository.save(product);
         }
@@ -58,7 +57,8 @@ public class SelfStoreProductService implements ProductService{
     }
 
     @Override
-    public boolean deleteProduct(Long id) {
-        return false;
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+
     }
 }
