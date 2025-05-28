@@ -71,8 +71,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.flywaydb/flyway-core &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.flywaydb</groupId>-->
+<!--			<artifactId>flyway-core</artifactId>-->
+<!--			<version>11.8.2</version>-->
+<!--		</dependency>-->
+<!--	&lt;!&ndash; https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql &ndash;&gt;-->
+<!--	<dependency>-->
+<!--		<groupId>org.flywaydb</groupId>-->
+<!--		<artifactId>flyway-mysql</artifactId>-->
+<!--		<version>11.8.2</version>-->
+<!--	</dependency>-->
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
