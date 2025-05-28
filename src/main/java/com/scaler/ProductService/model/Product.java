@@ -2,8 +2,10 @@ package com.scaler.ProductService.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-@Entity(name = "products")
+@Entity
+@Table(name = "products")
 public class Product extends BaseModel{
 
     private String title;

@@ -50,7 +50,7 @@ public class FakeStoreProductServiceImpl implements ProductService {
 //        beacuse if we use List<FakeStoreProductDto>.class to get the response it will show error
 //                as this API will trigger at runtime
 //                but java runtime me sare collection ka type erase krke Object kr deta hia toh
-//                its a bad practice to store any object (i.e. FakeStoreProductDto) in Listobject>
+//                its a bad practice to store any object (i.e. FakeStoreProductDto) in List<object>
 
 //            That why we use FakeStoreProductDto[] to avoid type erase problem at runtime.
 
