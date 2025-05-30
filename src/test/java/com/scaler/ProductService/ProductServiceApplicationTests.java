@@ -2,6 +2,7 @@ package com.scaler.ProductService;
 
 import com.scaler.ProductService.model.Product;
 import com.scaler.ProductService.repositories.ProductRepository;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,9 @@ class ProductServiceApplicationTests {
 
 	@Autowired
 	private ProductRepository productRepository;
+
+	@Autowired
+	private EntityManager entityManager;
 
 
 	@Test
@@ -27,6 +31,14 @@ class ProductServiceApplicationTests {
 	void testProductByIdUsingNativeQuey(){
 		Product product = productRepository.getProductUsingIdByNativeQuery(Long.valueOf(1));
 		System.out.println("DEBUG..");
+	}
+
+	@Test
+	void testCascadeTypeReferesh(){
+
+		Product product = entityManager.find(Product.class,1);
+		System.out.println("Before refresh :  ");
+
 	}
 
 

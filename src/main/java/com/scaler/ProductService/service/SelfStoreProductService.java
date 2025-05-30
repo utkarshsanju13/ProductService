@@ -37,22 +37,22 @@ public class SelfStoreProductService implements ProductService{
     @Override
     public Product createProduct(Product product) throws Exception {
 
-        Category category = product.getCategory();
-
-        if(category == null){
-            throw new CategoryNotFoundException("Product must contain category to save in the DB");
-        }
-
-        Optional<Category> category1 = categoryRepository.findByTitle(category.getTitle());
-
-        if(category1.isEmpty()){
-            Category newCategory = categoryRepository.save(category);
-            category.setId(newCategory.getId());
-        }
-            product.setCategory(category1.get());
-        if(null != product){
+//        Category category = product.getCategory();
+//
+//        if(category == null){
+//            throw new CategoryNotFoundException("Product must contain category to save in the DB");
+//        }
+//
+//        Optional<Category> category1 = categoryRepository.findByTitle(category.getTitle());
+//
+//        if(category1.isEmpty()){
+//            Category newCategory = categoryRepository.save(category);
+//            category.setId(newCategory.getId());
+//        }
+//            product.setCategory(category1.get());
+//        if(null != product){
             productRepository.save(product);
-        }
+//        }
         return product;
     }
 
