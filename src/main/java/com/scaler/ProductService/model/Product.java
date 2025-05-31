@@ -1,9 +1,7 @@
 package com.scaler.ProductService.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "products")
@@ -13,7 +11,10 @@ public class Product extends BaseModel{
     private String description;
     private Double price;
     private String image;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JsonManagedReference
+//            (cascade = CascadeType.DETACH)
+//            (cascade = CascadeType.REFRESH)
 //            (cascade = CascadeType.MERGE)
     private Category category;
 
