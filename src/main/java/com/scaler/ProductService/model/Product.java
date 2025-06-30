@@ -12,7 +12,7 @@ public class Product extends BaseModel{
     private Double price;
     private String image;
     @ManyToOne (fetch = FetchType.LAZY)
-    @JsonManagedReference
+//    @JsonManagedReference
 //            (cascade = CascadeType.DETACH)
 //            (cascade = CascadeType.REFRESH)
 //            (cascade = CascadeType.MERGE)

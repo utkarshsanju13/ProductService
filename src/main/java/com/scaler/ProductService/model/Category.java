@@ -14,7 +14,7 @@ public class Category extends BaseModel {
     private  String title;
 
     @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
-    @JsonBackReference
+//    @JsonBackReference
 //            , cascade = CascadeType.REMOVE)
     private List<Product> listOfProduct;
 
