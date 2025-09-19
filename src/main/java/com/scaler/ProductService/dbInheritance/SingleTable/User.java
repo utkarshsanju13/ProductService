@@ -10,7 +10,8 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
         name = "userType",
-        discriminatorType = DiscriminatorType.INTEGER //we can declare the type as string and char also ,
+        discriminatorType = DiscriminatorType.INTEGER
+        //we can declare the type as string and char also ,
         // must we declared int as it less size as string can be a larger in size
 )
 @DiscriminatorValue(value="0")

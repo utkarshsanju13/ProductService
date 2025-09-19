@@ -1,5 +1,6 @@
 package com.scaler.ProductService.service;
 
+import com.scaler.ProductService.Projection.ProductProjection;
 import com.scaler.ProductService.exception.ProductNotFoundException;
 import com.scaler.ProductService.model.Product;
 
@@ -15,4 +16,6 @@ public interface ProductService {
     Product createProduct(Product product) throws Exception;
 
     void deleteProduct(Long id);
+
+    ProductProjection findProductByTitle(String title);
 }

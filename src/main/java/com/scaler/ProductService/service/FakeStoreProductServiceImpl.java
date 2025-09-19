@@ -1,5 +1,6 @@
 package com.scaler.ProductService.service;
 
+import com.scaler.ProductService.Projection.ProductProjection;
 import com.scaler.ProductService.dtos.FakeStoreProductDto;
 import com.scaler.ProductService.exception.ProductNotFoundException;
 import com.scaler.ProductService.model.Category;
@@ -15,9 +16,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Service("FakeStoreProductServiceImpl")
+@Service
+        ("FakeStoreProductServiceImpl")
 public class FakeStoreProductServiceImpl implements ProductService {
-    //This service implement all the API using faceStore
+    //This service implement all the API using fakeStore
 
     private RestTemplate restTemplate ;
     @Value("${fakestore.api.base-url}")
@@ -95,6 +97,11 @@ public class FakeStoreProductServiceImpl implements ProductService {
 
     @Override
     public void deleteProduct(Long id) {
+    }
+
+    @Override
+    public ProductProjection findProductByTitle(String title) {
+        return null;
     }
 
     public static Product convertFakeSToreDtoToProduct(FakeStoreProductDto fakeStoreProductDto){

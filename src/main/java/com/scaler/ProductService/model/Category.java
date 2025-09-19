@@ -1,6 +1,7 @@
 package com.scaler.ProductService.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,8 +14,8 @@ public class Category extends BaseModel {
 
     private  String title;
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
-//    @JsonBackReference
+    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
+    @JsonManagedReference
 //            , cascade = CascadeType.REMOVE)
     private List<Product> listOfProduct;
 

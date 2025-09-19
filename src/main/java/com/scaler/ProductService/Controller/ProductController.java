@@ -1,7 +1,9 @@
 package com.scaler.ProductService.Controller;
 
 import com.scaler.ProductService.ExcpetionHandlerDto.RuntimeExceptionDto;
+import com.scaler.ProductService.Projection.ProductProjection;
 import com.scaler.ProductService.exception.ProductNotFoundException;
+import com.scaler.ProductService.model.Category;
 import com.scaler.ProductService.model.Product;
 import com.scaler.ProductService.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +21,38 @@ public class ProductController {
 //    @Autowired
     private ProductService productService;
 
-    public ProductController(@Qualifier("SelfStoreProductService") ProductService productService){
+    /* Use pf @Qualifier annotation
+    * Note: point the spring register the bean name as the class name
+    * But the name of the bean starts with lower case
+    * fakeStoreProductServiceImpl instead of FakeStoreProductServiceImpl*/
+    public ProductController(@Qualifier("selfStoreProductService") ProductService productService){
         this.productService = productService;
     }
 
+    /*This is working as we marked the SelfProductService as @Primary bean*/
+//    public ProductController(ProductService productService){
+//        this.productService = productService;
+//    }
+
     @GetMapping ("/{productId}")
     public ResponseEntity<Product> getSingleProduct(@PathVariable("productId") Long productId) throws ProductNotFoundException {
-
+         Product product = productService.getSingleProduct(productId); // A this point only select * from product query execute
+        Category category = product.getCategory();
+        System.out.println(category.getTitle());
         ResponseEntity<Product>  responseEntity =
                 new ResponseEntity<>(
-                    productService.getSingleProduct(productId),
+                    product,
                         HttpStatus.OK
         );
 
         return responseEntity;
+    }
+
+    @GetMapping("/productProjection/{title}")
+    public ResponseEntity<ProductProjection> getProductByTitle(@PathVariable String title){
+
+        ProductProjection productProjection = productService.findProductByTitle(title);
+        return ResponseEntity.ok(productProjection);
     }
 
     @GetMapping("/")
@@ -42,8 +62,8 @@ public class ProductController {
 
     @PostMapping()
     public Product createProduct(@RequestBody Product product) throws  Exception{
-        return productService.createProduct(product);
-//        return new Product();
+        Product product1 = productService.createProduct(product);
+        return product1;
     }
 
     @DeleteMapping("/{id}")

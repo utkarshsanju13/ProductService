@@ -1,5 +1,6 @@
 package com.scaler.ProductService.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -11,12 +12,12 @@ public class Product extends BaseModel{
     private String description;
     private Double price;
     private String image;
-    @ManyToOne (fetch = FetchType.LAZY)
-//    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
+    private Category category;
 //            (cascade = CascadeType.DETACH)
 //            (cascade = CascadeType.REFRESH)
 //            (cascade = CascadeType.MERGE)
-    private Category category;
 
     public String getTitle() {
         return title;
