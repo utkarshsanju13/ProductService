@@ -1,7 +1,9 @@
 package com.scaler.ProductService.Controller;
 
+import com.scaler.ProductService.Common.AuthCommon;
 import com.scaler.ProductService.ExcpetionHandlerDto.RuntimeExceptionDto;
 import com.scaler.ProductService.Projection.ProductProjection;
+import com.scaler.ProductService.exception.InvalidTokenException;
 import com.scaler.ProductService.exception.ProductNotFoundException;
 import com.scaler.ProductService.model.Category;
 import com.scaler.ProductService.model.Product;
@@ -34,8 +36,12 @@ public class ProductController {
 //        this.productService = productService;
 //    }
 
-    @GetMapping ("/{productId}")
-    public ResponseEntity<Product> getSingleProduct(@PathVariable("productId") Long productId) throws ProductNotFoundException {
+    @GetMapping ("/{productId}/{token}")
+    public ResponseEntity<Product> getSingleProduct(@PathVariable("productId") Long productId, @PathVariable String token) throws ProductNotFoundException, InvalidTokenException {
+
+        //Authentication
+        boolean authvalidation = AuthCommon.authTokenValidation(token);
+
          Product product = productService.getSingleProduct(productId); // A this point only select * from product query execute
         Category category = product.getCategory();
         System.out.println(category.getTitle());

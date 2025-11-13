@@ -3,10 +3,8 @@ package com.scaler.ProductService.ExcpetionHandlerDto;
 public class CategoryNotFoundExceptionDto {
 
     private String message;
-    private String HttpStatus;
 
-    public CategoryNotFoundExceptionDto(String httpStatus, String message) {
-        HttpStatus = httpStatus;
+    public CategoryNotFoundExceptionDto(String message) {
         this.message = message;
     }
 
@@ -18,11 +16,4 @@ public class CategoryNotFoundExceptionDto {
         this.message = message;
     }
 
-    public String getHttpStatus() {
-        return HttpStatus;
-    }
-
-    public void setHttpStatus(String httpStatus) {
-        HttpStatus = httpStatus;
-    }
 }
